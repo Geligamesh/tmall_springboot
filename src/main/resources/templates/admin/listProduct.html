@@ -110,7 +110,7 @@
             <tr v-for="bean in beans ">
                 <td>{{bean.id}}</td>
                 <td>
-
+                    <img v-if="bean.firstProductImage!=null" :src="'img/productSingle/' + bean.firstProductImage.id + '.jpg'" width="40px">
                 </td>
                 <td>{{bean.name}}</td>
                 <td>{{bean.subTitle}}</td>

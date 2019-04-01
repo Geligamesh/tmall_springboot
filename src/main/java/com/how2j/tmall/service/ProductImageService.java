@@ -40,9 +40,9 @@ public class ProductImageService {
     }
 
     public void setFirstProductImage(Product product){
-        List<ProductImage> singleImages = listSingleProductImages(product);
-        if(!singleImages.isEmpty()){
-            product.setFirstProductImage(singleImages.get(0));
+        List<ProductImage> singles = listSingleProductImages(product);
+        if (!singles.isEmpty()){
+            product.setFirstProductImage(singles.get(0));
         }else{
             product.setFirstProductImage(new ProductImage());
         }
