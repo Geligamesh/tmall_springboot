@@ -1,7 +1,6 @@
 package com.how2j.tmall.web;
 
 import com.how2j.tmall.pojo.Product;
-import com.how2j.tmall.pojo.Property;
 import com.how2j.tmall.pojo.PropertyValue;
 import com.how2j.tmall.service.ProductService;
 import com.how2j.tmall.service.PropertyValueService;
