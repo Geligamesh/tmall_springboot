@@ -2,6 +2,7 @@ package com.how2j.tmall.service;
 
 import com.how2j.tmall.dao.CategoryDAO;
 import com.how2j.tmall.pojo.Category;
+import com.how2j.tmall.pojo.Product;
 import com.how2j.tmall.util.Page4Navigator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -62,4 +63,28 @@ public class CategoryService {
     public void update(Category bean){
         categoryDAO.save(bean);
     }
+
+    public void removeCategoryFromProduct(Category category){
+        List<Product> products = category.getProducts();
+        if(products!=null){
+            for (Product product : products) {
+                product.setCategory(null);
+            }
+        }
+
+        List<List<Product>> productsByRow = category.getProductsByRow();
+        for (List<Product> productList : productsByRow) {
+            for (Product product : productList) {
+                product.setCategory(null);
+            }
+        }
+    }
+
+    public void removeCategoryFromProduct(List<Category> categories){
+        for (Category category : categories) {
+            removeCategoryFromProduct(category);
+        }
+    }
+
+
 }
