@@ -3,10 +3,10 @@ package com.how2j.tmall.web;
 import com.how2j.tmall.pojo.User;
 import com.how2j.tmall.service.UserService;
 import com.how2j.tmall.util.Page4Navigator;
+import com.how2j.tmall.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.HtmlUtils;
 
 @RestController
 public class UserController {
@@ -20,4 +20,6 @@ public class UserController {
         Page4Navigator<User> page = userService.list(start, size,5);
         return page;
     }
+
+
 }
