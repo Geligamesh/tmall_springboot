@@ -5,7 +5,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>tmall_springboot</name>
     <description>tmall_springboot</description>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -112,9 +112,11 @@
             <artifactId>hsqldb</artifactId>
         </dependency>
     </dependencies>
+
     <properties>
         <java.version>1.8</java.version>
     </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -122,5 +124,25 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+
+        <resources>
+            <resource>
+                <!-- 指定resources插件处理哪个目录下的资源文件 -->
+                <directory>src/main/webapp</directory>
+                <!--注意此次必须要放在此目录下才能被访问到 -->
+                <targetPath>META-INF/resources</targetPath>
+                <includes>
+                    <include>**/**</include>
+                </includes>
+            </resource>
+
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/**</include>
+                </includes>
+            </resource>
+        </resources>
+
     </build>
 </project>

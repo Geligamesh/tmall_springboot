@@ -2,7 +2,6 @@ package com.how2j.tmall.service;
 
 import com.how2j.tmall.dao.PropertyDAO;
 import com.how2j.tmall.dao.PropertyValueDAO;
-import com.how2j.tmall.pojo.Category;
 import com.how2j.tmall.pojo.Product;
 import com.how2j.tmall.pojo.Property;
 import com.how2j.tmall.pojo.PropertyValue;

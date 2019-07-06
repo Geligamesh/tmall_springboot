@@ -56,6 +56,8 @@ public class ProductImageController {
             folder += "productDetail";
         }
         File imageFolder = new File(request.getServletContext().getRealPath(folder));
+        File imagefolder = new File(request.getServletContext().getRealPath(folder));
+
         File file = new File(imageFolder,bean.getId() + ".jpg");
         String fileName = file.getName();
 
@@ -89,8 +91,10 @@ public class ProductImageController {
 
     @DeleteMapping("productImages/{id}")
     public Object delete(@PathVariable("id") int id,HttpServletRequest request){
+        // ProductImage bean = productImageService.get(id);
+        // productImageService.delete(id);
         ProductImage bean = productImageService.get(id);
-        productImageService.delete(id);
+        productImageService.delete(bean.getId());
 
         String folder = "img/";
         if(productImageService.type_single.equals(bean.getType())){

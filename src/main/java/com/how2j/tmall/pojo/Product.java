@@ -1,12 +1,16 @@
 package com.how2j.tmall.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.elasticsearch.annotations.Document;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "product")
 @JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
+@Document(indexName = "tmall_springboot",type = "product")
 public class Product {
 
     @Id
@@ -21,8 +25,49 @@ public class Product {
     private String subTitle;
     private float originalPrice;
     private float promotePrice;
+
     @Transient
     private ProductImage firstProductImage;
+    @Transient
+    private List<ProductImage> productSingleImages;
+    @Transient
+    private List<ProductImage> productDetailImages;
+    @Transient
+    private int reviewCount;
+    @Transient
+    private int saleCount;
+
+    public List<ProductImage> getProductSingleImages() {
+        return productSingleImages;
+    }
+
+    public void setProductSingleImages(List<ProductImage> productSingleImages) {
+        this.productSingleImages = productSingleImages;
+    }
+
+    public List<ProductImage> getProductDetailImages() {
+        return productDetailImages;
+    }
+
+    public void setProductDetailImages(List<ProductImage> productDetailImages) {
+        this.productDetailImages = productDetailImages;
+    }
+
+    public int getReviewCount() {
+        return reviewCount;
+    }
+
+    public void setReviewCount(int reviewCount) {
+        this.reviewCount = reviewCount;
+    }
+
+    public int getSaleCount() {
+        return saleCount;
+    }
+
+    public void setSaleCount(int saleCount) {
+        this.saleCount = saleCount;
+    }
 
     public ProductImage getFirstProductImage() {
         return firstProductImage;
@@ -97,5 +142,24 @@ public class Product {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", category=" + category +
+                ", name='" + name + '\'' +
+                ", subTitle='" + subTitle + '\'' +
+                ", originalPrice=" + originalPrice +
+                ", promotePrice=" + promotePrice +
+                ", firstProductImage=" + firstProductImage +
+                ", productSingleImages=" + productSingleImages +
+                ", productDetailImages=" + productDetailImages +
+                ", reviewCount=" + reviewCount +
+                ", saleCount=" + saleCount +
+                ", stock=" + stock +
+                ", createDate=" + createDate +
+                '}';
     }
 }

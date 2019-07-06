@@ -195,4 +195,12 @@ public class Order {
     public void setStatusDesc(String statusDesc) {
         this.statusDesc = statusDesc;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "status='" + status + '\'' +
+                ", statusDesc='" + statusDesc + '\'' +
+                '}';
+    }
 }

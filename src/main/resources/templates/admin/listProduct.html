@@ -110,7 +110,10 @@
             <tr v-for="bean in beans ">
                 <td>{{bean.id}}</td>
                 <td>
-                    <img v-if="bean.firstProductImage!=null" :src="'img/productSingle/' + bean.firstProductImage.id + '.jpg'" width="40px">
+                    <!--<img v-if="bean.firstProductImage!=null" :src="'img/productSingle/' + bean.firstProductImage.id + '.jpg'" width="40px">-->
+                    <a target="_blank" v-if="bean.firstProductImage!=null" title="点击查看图片" :href="'img/productSingle/' + bean.firstProductImage.id + '.jpg'">
+                        <img v-if="bean.firstProductImage!=null" :src="'img/productSingle/' + bean.firstProductImage.id + '.jpg'" width="40px"/>
+                    </a>
                 </td>
                 <td>{{bean.name}}</td>
                 <td>{{bean.subTitle}}</td>

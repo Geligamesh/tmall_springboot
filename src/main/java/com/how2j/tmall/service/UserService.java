@@ -10,8 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import javax.naming.Name;
-
 @Service
 public class UserService {
 
@@ -29,12 +27,16 @@ public class UserService {
         userDAO.save(user);
     }
 
-    public User findByName(String name){
+    public User findByName(String name) {
         return userDAO.findByName(name);
     }
 
     public boolean isExist(String name){
         User user = findByName(name);
         return user!=null;
+    }
+
+    public User get(String name,String password) {
+        return userDAO.findByNameAndPassword(name, password);
     }
 }

@@ -28,11 +28,17 @@
                     var id = bean.id;
                     $("#orderItemsTR" + id).toggle();
                 },
+                // deliveryOrder:function(order,e){
+                //     var url =  "deliveryOrder/"+order.id;
+                //     axios.put(url).then(function(response) {
+                //         $(e.target).hide();
+                //     });
+                // }
                 deliveryOrder:function (order, event) {
                     var url = this.url;
                     axios.put(url,order).then(function (response) {
                         $(event.target).hide();
-                    });
+                    })
                 }
             }
         })
@@ -44,6 +50,7 @@
             formatString = formatString || "YYYY-MM-DD HH:mm:ss";
             return moment(value).format(formatString);
         })
+
     });
 </script>
 

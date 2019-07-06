@@ -30,11 +30,21 @@ public class OrderController {
         return page;
     }
 
+    // @PutMapping("deliveryOrder/{oid}")
+    // public Object deliveryOrder(@PathVariable int oid){
+    //     Order order = orderService.get(oid);
+    //     order.setStatus(orderService.waitDelivery);
+    //     order.setDeliveryDate(new Date());
+    //     orderService.update(order);
+    //     return Result.success();
+    // }
+
     @PutMapping("orders")
-    public Object deliveryOrder(@RequestParam Order order){
+    public Object deliveryOrder(@RequestBody Order order){
         order.setStatus(orderService.waitDelivery);
         order.setDeliveryDate(new Date());
         orderService.update(order);
         return Result.success();
     }
+
 }

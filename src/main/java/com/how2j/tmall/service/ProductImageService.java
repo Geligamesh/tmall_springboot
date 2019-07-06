@@ -1,6 +1,7 @@
 package com.how2j.tmall.service;
 
 import com.how2j.tmall.dao.ProductImageDAO;
+import com.how2j.tmall.pojo.OrderItem;
 import com.how2j.tmall.pojo.Product;
 import com.how2j.tmall.pojo.ProductImage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,12 @@ public class ProductImageService {
     public void setFirstProductImages(List<Product> products){
         for (Product product : products) {
             setFirstProductImage(product);
+        }
+    }
+
+    public void setFirstProductImagesOnOrderItems(List<OrderItem> orderItems) {
+        for (OrderItem orderItem : orderItems) {
+            setFirstProductImage(orderItem.getProduct());
         }
     }
 }

@@ -18,11 +18,11 @@
             el:"#workingArea",
             data:data4Vue,
             mounted:function () {
-                this.list(0)
+                this.list(0);
             },
             methods:{
-                list:function (start) {
-                    var url = this.url +"?start=" + start;
+                list:function(start){
+                    var url = this.url + "?start=" + start;
                     axios.get(url).then(function (response) {
                         vue.pagination = response.data;
                         vue.beans = response.data.content;
@@ -30,14 +30,14 @@
 
                     });
                 },
-                jump:function (page) {
-                    jump(page,vue);
+                jump:function(page) {
+                  jump(page,vue);
                 },
-                jumpByNumber:function (start) {
-                    jumpByNumber(start,vue);
+                jumpByNumber:function(start){
+                  jumpByNumber(start,vue);
                 },
                 add:function () {
-                    if(!checkEmpty(this.bean.name,"分类管理")){
+                    if(!checkEmpty(this.bean.name,"分类名称")){
                         return;
                     }
                     if(!checkEmpty(this.file,"分类图片")){
@@ -55,7 +55,7 @@
                         $("#categoryPic").val('');
                     });
                 },
-                getFile:function (event) {
+                getFile:function(event) {
                     this.file = event.target.files[0];
                 },
                 deleteBean:function (id) {

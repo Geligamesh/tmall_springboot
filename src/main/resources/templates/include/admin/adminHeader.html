@@ -1,4 +1,6 @@
-<template th:fragment="html(title)" > 
+<template th:fragment="html(title)" >
+
+	<!--导入外部的静态资源-->
 	<script src="js/jquery/2.0.0/jquery.min.js"></script>
 	<link href="css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
 	<script src="js/bootstrap/3.3.6/bootstrap.min.js"></script>
@@ -6,13 +8,13 @@
 	<script src="js/axios/0.17.1/axios.min.js"></script>
 	<script src="js/moment/2.22.2/moment.js"></script> <!-- vue.js 格式化日期用的 -->
 	<link href="css/back/style.css" rel="stylesheet">
-	
+
+
 	<script>
 	//判断是否为空
-	function checkEmpty(value,text){
-		
-		if(null==value || value.length==0){
-			alert(text+ "不能为空");
+	function checkEmpty(value,text) {
+		if (value == null || value.length == 0) {
+			alert(text + "不能为空");
 			return false;
 		}
 		return true;
@@ -60,6 +62,7 @@
 		}
 		return true;
 	}
+
     //判断是否整数
 	function checkInt(value, text){
 		
@@ -73,7 +76,7 @@
 		}
 		return false;
 	}
-	
+
     //确实是否要删除
 	function checkDeleteLink(){
 		var confirmDelete = confirm("你妈的，确定要删除老子?");
@@ -94,6 +97,7 @@
 			vue.list(vue.pagination.number + 1);
 		}
 	}
+
     //跳转函数
 	function jumpByNumber(start, vue) {
 		if(start != vue.pagination.number){
@@ -103,5 +107,5 @@
 
 	</script>	
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 	
-	<title th:text="${title}" ></title>
+	<title th:text="${title}"></title>
 </template>

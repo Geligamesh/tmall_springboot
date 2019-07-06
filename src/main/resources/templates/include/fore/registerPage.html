@@ -1,48 +1,56 @@
 <div th:fragment="html">
     <script>
-        $(function () {
+        $(function(){
             var data4Vue = {
-                url:"foreregister",
-                user:{name:"",password:"",repeatpassword:""}
+                uri:'foreregister',
+                result: [],
+                user:{name:'', password:'', repeatpassword:''}
             };
+            //ViewModel
             var vue = new Vue({
-                el:"#workingArea",
-                data:data4Vue,
-                mounted:function () {
+                el: '#workingArea',
+                data: data4Vue,
+                mounted:function(){
                     linkDefaultActions();
                 },
-                methods:{
-                    register:function () {
-                        if(this.user.name.length == 0){
-                            $("span.errorMessage").html("用户名不能为空");
+                methods: {
+                    register:function(){
+                        var url =  this.uri;
+                        if(0==this.user.name.length){
+                            $("span.errorMessage").html("请输入用户名");
                             $("div.registerErrorMessageDiv").css("visibility","visible");
                             return;
                         }
-                        if(this.user.password.length == 0){
-                            $("span.errorMessage").html("密码不能为空");
+                        if(0==this.user.password.length){
+                            $("span.errorMessage").html("请输入密码");
                             $("div.registerErrorMessageDiv").css("visibility","visible");
                             return;
                         }
-                        if(this.user.password != this.user.repeatpassword){
-                            $("span.errorMessage").html("两次密码不一致");
+                        if(0==this.user.repeatpassword.length){
+                            $("span.errorMessage").html("请输入重复密码");
                             $("div.registerErrorMessageDiv").css("visibility","visible");
                             return;
                         }
-                        var url = this.url;
-                        axios.post(url,this.user).then(function (response) {
+                        if(this.user.password !=this.user.repeatpassword){
+                            $("span.errorMessage").html("重复密码不一致");
+                            $("div.registerErrorMessageDiv").css("visibility","visible");
+                            return;
+                        }
+
+                        axios.post(url,this.user).then(function(response) {
                             var result = response.data;
-                            if(result.code == 0){
-                                location.href = "registerSuccess";
-                            }else{
+                            if(result.code==0){
+                                location.href="registerSuccess";
+                            }
+                            else{
                                 $("span.errorMessage").html(result.message);
                                 $("div.registerErrorMessageDiv").css("visibility","visible");
-                                this.user = {name:"",password:"",repeatpassword:""};
                             }
                         });
                     }
                 }
-            })
-        });
+            });
+        })
     </script>
     <div class="registerDiv">
         <div class="registerErrorMessageDiv">
@@ -51,6 +59,7 @@
                 <span class="errorMessage"></span>
             </div>
         </div>
+
 
         <table class="registerTable" align="center">
             <tr>

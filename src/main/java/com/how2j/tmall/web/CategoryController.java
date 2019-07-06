@@ -63,6 +63,7 @@ public class CategoryController {
     public Object update(Category bean,MultipartFile image,HttpServletRequest request) throws IOException {
         String name = request.getParameter("name");
         bean.setName(name);
+        System.out.println(bean);
         categoryService.update(bean);
         if (image!=null){
             saveOrUpdateImageFile(bean,image,request);
