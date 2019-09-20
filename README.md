@@ -20,13 +20,20 @@
 ### 项目展示
 	因为服务器内存太小了部署了一个博客内存已经快不够了所以就没把项目部署上去，到时候换一台内存更大的服务器之后再部署项目- -|||...
 
+
+
 ![项目展示动图](images/show.gif)
+![首页展示动图](images/首页展示.gif)
+![商品详情动图](images/商品详情.gif)
+![商品搜索动图](images/商品搜索.gif)
+![购物车和订单支付动图](images/购物车和订单支付.gif)
+![我的订单动图](images/我的订单.gif)
 
 ### 技术选型
 
 技术 | 说明 | 官网
 ----|----|----
-Spring Boot | 容器+MVC框架 | [https://spring.io/projects/spring-boot](https://spring.io/projects/spring-boot)
+Spring Boot | MVC框架 | [https://spring.io/projects/spring-boot](https://spring.io/projects/spring-boot)
 Shiro | 认证和授权框架 | [https://spring.io/projects/spring-security](https://spring.io/projects/spring-security)
 Elasticsearch | 搜索引擎 | [https://github.com/elastic/elasticsearch](https://github.com/elastic/elasticsearch)
 Redis | 分布式缓存 | [https://redis.io/](https://redis.io/)
