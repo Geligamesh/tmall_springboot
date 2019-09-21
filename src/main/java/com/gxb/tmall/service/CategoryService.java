@@ -5,6 +5,9 @@ import com.gxb.tmall.pojo.Category;
 import com.gxb.tmall.pojo.Product;
 import com.gxb.tmall.util.Page4Navigator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -14,13 +17,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-// @CacheConfig(cacheNames = "categories")
+@CacheConfig(cacheNames = "categories")
 public class CategoryService {
 
     @Autowired
     private CategoryDAO categoryDAO;
 
-    // @Cacheable(key="'categories-page-'+#p0+ '-' + #p1")
+    @Cacheable(key="'categories-page-'+#p0+ '-' + #p1")
     public Page4Navigator<Category> list(int start,int size,int navigatePages){
         Sort sort = new Sort(Sort.Direction.DESC,"id");
         Pageable pageable = new PageRequest(start,size,sort);
@@ -28,7 +31,7 @@ public class CategoryService {
         return new Page4Navigator<>(navigatePages, pageFromJPA);
     }
 
-    // @Cacheable(key = "'categories-all'")
+    @Cacheable(key = "'categories-all'")
     public List<Category> list(){
         Sort sort = new Sort(Sort.Direction.DESC,"id");
         return categoryDAO.findAll(sort);
@@ -38,7 +41,7 @@ public class CategoryService {
      * 保存一个分类
      * @param bean
      */
-    // @CacheEvict(allEntries = true)
+    @CacheEvict(allEntries = true)
     // @CachePut(key = "'category-one-'+#p0")
     public void add(Category bean){
         categoryDAO.save(bean);
@@ -48,7 +51,7 @@ public class CategoryService {
      * 删除一个分类
      * @param id
      */
-    // @CacheEvict(allEntries = true)
+    @CacheEvict(allEntries = true)
     // @CachePut(key = "'category-one-'+#p0")
     public void delete(int id){
         categoryDAO.delete(id);
@@ -59,7 +62,7 @@ public class CategoryService {
      * @param id
      * @return
      */
-    // @Cacheable(key = "'categoryies-one-'+#p0")
+    @Cacheable(key = "'categories-one-'+#p0")
     public Category get(int id){
         return categoryDAO.findOne(id);
     }
@@ -68,7 +71,7 @@ public class CategoryService {
      * 根据id更新分类
      * @param bean
      */
-    // @CacheEvict(allEntries = true)
+    @CacheEvict(allEntries = true)
     // @CachePut(key = "'category-one-'+#p0")
     public void update(Category bean){
         categoryDAO.save(bean);
